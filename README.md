@@ -9,4 +9,4 @@ Top News Website is a website that provides news.
 
 ## News DATA
 
-News Data we fetch from (News Api)[https://newsapi.org/]
+News Data we fetch from [News Api](https://newsapi.org/)
