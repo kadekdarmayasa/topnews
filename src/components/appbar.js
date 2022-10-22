@@ -4,10 +4,10 @@ class AppBar extends HTMLElement {
 	}
 
 	render() {
-		this.innerHTML = `<nav class="flex justify-between items-center px-6 md:px-[68px] h-24 relative">
+		this.innerHTML = `<nav class="flex justify-between items-center px-6 md:px-[50px] h-24 relative">
       <a href="" class="brand text-2xl font-bold">TopNews</a>
       <ul
-        class="mt-2 text-base font-medium w-11/12 overflow-x-auto whitespace-nowrap absolute top-24 h-9 md:w-auto md:overflow-visible md:whitespace-normal md:static md:top-0 md:h-auto">
+        class="mt-2 text-base font-medium w-11/12 overflow-x-auto whitespace-nowrap absolute top-24 h-9 sm:w-auto sm:overflow-visible sm:whitespace-normal sm:static md:h-auto">
         <li class="inline-block mr-5">
           <a href="#" class="underline underline-offset-8 decoration-[#06283D]">Home</a>
         </li>
