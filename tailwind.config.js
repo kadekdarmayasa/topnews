@@ -1,7 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-	content: ['./public/*.html', './src/components/*.js'],
+	content: ['./public/*.html', './src/js/**/*.js'],
 	theme: {
 		fontFamily: {
 			display: ['"Plus Jakarta Sans"', 'sans-serif'],
