@@ -1,4 +1,5 @@
 import formatDate from './dateformat';
+// Atur Width pada gambar featured for members
 
 const featureContent = async (baseUrl) => {
 	const getNews = async (key, pageSize) => {
@@ -13,9 +14,8 @@ const featureContent = async (baseUrl) => {
 
 	const feature1 = document.querySelector('.feature-1');
 	const feature1Content = await getNews('health', 1);
-	console.log(feature1Content);
 	feature1.innerHTML = `
-     <img src="${feature1Content[0]['urlToImage']}" alt="${feature1Content[0]['title']}" class="w-full h-40 object-none  image-source ">
+     <img src="${feature1Content[0]['urlToImage']}" alt="health-image" class="w-full h-40 object-none  image-source ">
           <div class="px-1">
             <a href="${feature1Content[0]['url']}" target="_blank" class="hover:underline title font-semibold block text-lg my-2 overflow-hidden h-14  text-ellipsis line-clamp-2">
               ${feature1Content[0]['title']}
@@ -42,10 +42,9 @@ const featureContent = async (baseUrl) => {
 	const feature2 = document.querySelector('.feature-2');
 	const feature2Contents = await getNews('technology', 2);
 	Array.from(feature2Contents).forEach((feature2Content) => {
-		console.log(feature2Content);
 		feature2.innerHTML += `
      <article class="feature-2 h-[100px] md:h-[150px] flex">
-            <img src="${feature2Content['urlToImage']}" alt="${feature2Content['title']}"
+            <img src="${feature2Content['urlToImage']}" alt="tech-images"
               class="md:w-[150px]  object-cover mr-3 w-[120px] h-full">
             <div class="flex flex-col overflow-hidden">
               <a href="${feature2Content['url']}"
@@ -74,7 +73,7 @@ const featureContent = async (baseUrl) => {
 	Array.from(feature3Contents).forEach((feature3Content) => {
 		feature3.innerHTML += `
        <article class="feature-3 h-[100px] flex">
-            <img src="${feature3Content['urlToImage']}" alt="${feature3Content['title']}" class="w-[120px] h-full object-cover mr-2">
+            <img src="${feature3Content['urlToImage']}" alt="art-image" class="w-[120px] h-full object-cover mr-2">
             <div class="flex flex-col">
               <a href="${feature3Content['url']}"
                 class="hover:underline title font-semibold text-sm h-10 overflow-hidden text-ellipsis line-clamp-2">
