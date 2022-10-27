@@ -8,23 +8,23 @@ class AppBar extends HTMLElement {
       <a href="" class="brand text-2xl font-bold">TopNews</a>
       <ul
         class="mt-2 text-base font-medium w-11/12 overflow-x-auto whitespace-nowrap absolute top-24 h-9 sm:w-auto sm:overflow-visible sm:whitespace-normal sm:static md:h-auto">
-        <li class="inline-block mr-5">
-          <a href="#" class="underline underline-offset-8 decoration-[#06283D]">Home</a>
+        <li class="inline-block mr-5 cursor-pointer" id="home">
+          <a class="underline underline-offset-8 decoration-[#06283D]">Home</a>
         </li>
-        <li class="inline-block mr-5 ">
-          <a href="#" class="hover:underline underline-offset-8 decoration-[#06283D]">Technology</a>
+        <li class="inline-block mr-5 cursor-pointer" id="technology">
+          <a class="hover:underline underline-offset-8 decoration-[#06283D]">Technology</a>
         </li>
-        <li class="inline-block mr-5 ">
-          <a href="#" class="hover:underline underline-offset-8 decoration-[#06283D]">Health</a>
+        <li class="inline-block mr-5 cursor-pointer" id="health">
+          <a class="hover:underline underline-offset-8 decoration-[#06283D]">Health</a>
         </li>
-        <li class="inline-block mr-5 ">
-          <a href="#" class="hover:underline underline-offset-8 decoration-[#06283D]">Art</a>
+        <li class="inline-block mr-5 cursor-pointer" id="art">
+          <a class="hover:underline underline-offset-8 decoration-[#06283D]">Art</a>
         </li>
-        <li class="inline-block mr-5 ">
-          <a href="#" class="hover:underline underline-offset-8 decoration-[#06283D]">Education</a>
+        <li class="inline-block mr-5 cursor-pointer" id="education">
+          <a class="hover:underline underline-offset-8 decoration-[#06283D]">Education</a>
         </li>
-        <li class="inline-block mr-5 ">
-          <a href="#" class="hover:underline underline-offset-8 decoration-[#06283D]">Science</a>
+        <li class="inline-block mr-5 cursor-pointer" id="science">
+          <a class="hover:underline underline-offset-8 decoration-[#06283D]">Science</a>
         </li>
       </ul>
       <button

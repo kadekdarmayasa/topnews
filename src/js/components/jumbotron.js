@@ -1,12 +1,22 @@
 class Jumbotron extends HTMLElement {
 	connectedCallback() {
+		this.className = this.getAttribute('class') || null;
 		this.render();
+	}
+
+	attributeChangedCallback(name, newValue) {
+		this[name] = newValue;
+		this.render();
+	}
+
+	static get observedAttributes() {
+		return ['class'];
 	}
 
 	render() {
 		this.innerHTML = `
-    <section
-      class="md:text-left text-center jumbtoron bg-[#DFF6FF] mt-20 mx-6 sm:mt-6 md:mx-[50px] flex justify-between items-center p-16 md:px-20 px-8 flex-col md:flex-row">
+     <section
+      class="md:text-left text-center jumbotron bg-[#DFF6FF] mt-20 mx-6 sm:mt-6 md:mx-[50px] flex justify-between items-center p-16 md:px-20 px-8 flex-col md:flex-row">
       <div class="first-column sm:max-w-[460px] md:order-1 order-2 mt-12 md:mt-0">
         <h1 class="font-semibold text-xl sm:text-2xl leading-10">Find Popular and Helpful News <br
             class="hidden sm:block"> on
@@ -23,7 +33,8 @@ class Jumbotron extends HTMLElement {
       <div class="second-column max-w-[540px] md:order-2">
         <img src="./img/jumbotron-img.svg" alt="jumbtron">
       </div>
-    </section>`;
+    </section>
+  `;
 	}
 }
 
