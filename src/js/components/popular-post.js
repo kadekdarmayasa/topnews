@@ -4,7 +4,7 @@ class PopularPost extends HTMLElement {
 		this.render();
 	}
 
-	connectedChangedCallback(name, newValue) {
+	attributeChangedCallback(name, newValue) {
 		this[name] = newValue;
 		this.render();
 	}

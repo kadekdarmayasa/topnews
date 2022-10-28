@@ -9,7 +9,7 @@ class Jumbotron extends HTMLElement {
 		this.render();
 	}
 
-	static get observedAttributes() {
+	static get attributeObserved() {
 		return ['class'];
 	}
 

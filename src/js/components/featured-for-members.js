@@ -4,18 +4,17 @@ class FeaturedForMembers extends HTMLElement {
 		this.render();
 	}
 
-	connectedChangedCallback(name, newValue) {
+	attributeChangedCallback(name, newValue) {
 		this[name] = newValue;
 		this.render();
 	}
 
-	static get observedAttribute() {
+	static get attributeObserved() {
 		return ['class'];
 	}
 
 	render() {
 		this.innerHTML = `
-    <div class="featured-for-member">
       <section class="mt-32 mb-8">
         <h2 class="text-xl font-semibold">Featured For Members</h2>
         <hr
@@ -24,9 +23,8 @@ class FeaturedForMembers extends HTMLElement {
       </section>
 
       <section class="flex w-full gap-6 justify-between flex-col md:flex-row">
-
-        <article class="feature-1 w-full mb-16 md:mb-0 md:max-w-[34%] max-h-[300px]">
-        </article>
+        <section class="feature-1 w-full mb-16 md:mb-0 md:max-w-[34%] max-h-[300px]" id="feature-1">
+        </section>
 
         <section class="feature-2 max-h-[300px] w-full md:max-w-[34%] flex flex-col gap-y-8 gap-x-4 md:gap-y-4">
         </section>
@@ -34,7 +32,6 @@ class FeaturedForMembers extends HTMLElement {
         <section class="feature-3 h-[300px] w-full md:max-w-[30%] flex flex-col gap-y-8 gap-x-4 md:gap-y-4">
         </section>
       </section>
-    </div>
     `;
 	}
 }

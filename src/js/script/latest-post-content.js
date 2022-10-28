@@ -7,7 +7,6 @@ const latestPostContent = async (baseUrl, pageSize) => {
 		},
 	});
 	const responseJson = await response.json();
-	console.log(responseJson);
 	const articles = responseJson['articles'];
 
 	const latestPostContentContainer = document.getElementById('latest-post-container');
