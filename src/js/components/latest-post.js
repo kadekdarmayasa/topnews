@@ -9,7 +9,7 @@ class LatestPost extends HTMLElement {
 		this.render();
 	}
 
-	static get attributeObserved() {
+	static get observedAttributes() {
 		return ['class'];
 	}
 
