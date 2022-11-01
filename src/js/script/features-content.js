@@ -14,6 +14,8 @@ const featureContent = async (baseUrl) => {
 	window.onload = async function () {
 		const feature1 = document.querySelector('.feature-1');
 		const feature1Content = await getNews('health', 1);
+		if (feature1Content[0].source.id == null) {
+		}
 		feature1.innerHTML = `
 		   <img src="${feature1Content[0]['urlToImage']}" alt="health-image" class="w-full h-40 object-none  image-source ">
 		        <div class="px-1">
