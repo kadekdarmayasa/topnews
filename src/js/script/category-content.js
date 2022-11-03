@@ -1,20 +1,17 @@
 import formatDate from './dateformat';
+import isNull from './null-checking';
 
-const categoryContent = async (baseUrl, key) => {
-	const getNewsBasedOnCategory = async (pageSize) => {
-		const response = await fetch(`${baseUrl}q=${key}&sortBy=publishedAt&pageSize=${pageSize}&language=en`, {
-			headers: {
-				'X-Api-Key': 'dadfe7d798784bcb8b4d0fb510216e81',
-			},
-		});
-		const responseJson = await response.json();
-		return responseJson.articles;
-	};
+const getPostBasedCategory = async (baseUrl, key) => {
+	const response = await fetch(`${baseUrl}q=${key}&sortBy=publishedAt&pageSize=40&language=en`, {
+		headers: {
+			'X-Api-Key': 'dadfe7d798784bcb8b4d0fb510216e81',
+		},
+	});
+	const responseJson = await response.json();
+	const news = responseJson.articles;
 
 	const categoryContentContainer = document.querySelector('.category-content');
-	const news = await getNewsBasedOnCategory(10);
-
-	news.forEach((data) => {
+	news.filter((data) => isNull(data)).forEach((data) => {
 		categoryContentContainer.innerHTML += `
 	     <div class="card w-96 bg-white shadow-xl">
 	      <figure>
@@ -34,4 +31,4 @@ const categoryContent = async (baseUrl, key) => {
 	});
 };
 
-export default categoryContent;
+export default getPostBasedCategory;

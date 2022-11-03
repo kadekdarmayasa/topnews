@@ -15,17 +15,19 @@
 
 
   <main class="px-6 md:px-[50px] font-display mb-32 md:mb-52">
-    <!-- Category Menu -->
+    <!-- Category Content -->
     <div class="category-content mt-20 flex flex-wrap gap-x-4 gap-y-8 justify-center">
     </div>
 
+    <!-- Featured For Members -->
     <featured-for-members class="featured-content"></featured-for-members>
+
     <!-- Latest & Popular Posts -->
-    <div class="mt-48 flex gap-10 md:flex-row flex-col">
+    <div class="mt-48 flex gap-10 md:flex-row flex-col w-full">
       <!-- Latest Post -->
-      <latest-posts class="md:max-w-[65%]"></latest-posts>
+      <latest-posts class="md:w-[65%]"></latest-posts>
       <!-- Popular Posts -->
-      <popular-posts class="md:max-w-[35%] mt-6 md:mt-0"></popular-posts>
+      <popular-posts class="md:w-[35%] mt-6 md:mt-0"></popular-posts>
     </div>
   </main>
 
@@ -39,12 +41,12 @@
       <!-- Navigation Links -->
       <div class="mt-10 md:mt-0">
         <ul class="text-lg">
-          <li class="mb-2"><a href="">Home</a></li>
-          <li class="mb-2"><a href="">Technology</a></li>
-          <li class="mb-2"><a href="">Health</a></li>
-          <li class="mb-2"><a href="">Art</a></li>
-          <li class="mb-2"><a href="">Education</a></li>
-          <li class="mb-2"><a href="">Science</a></li>
+          <li class="mb-2 footer-nav-link" data-id="home"><a href="#home">Home</a></li>
+          <li class="mb-2 footer-nav-link" data-id="technology"><a href="#technology">Technology</a></li>
+          <li class="mb-2 footer-nav-link" data-id="health"><a href="#health">Health</a></li>
+          <li class="mb-2 footer-nav-link" data-id="art"><a href="#art">Art</a></li>
+          <li class="mb-2 footer-nav-link" data-id="education"><a href="#education">Education</a></li>
+          <li class="mb-2 footer-nav-link" data-id="science"><a href="#science">Science</a></li>
         </ul>
       </div>
 
