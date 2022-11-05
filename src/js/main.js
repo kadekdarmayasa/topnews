@@ -1,11 +1,10 @@
+import getPostBasedCategory from './script/category-content';
 import getFeaturedPost from './script/features-content';
 import getLatestPost from './script/latest-post-content';
 import getPopularPost from './script/popular-post-content';
-import getPostBasedCategory from './script/category-content';
-const baseUrl = 'https://newsapi.org/v2/everything?';
-getFeaturedPost(baseUrl);
-getLatestPost(baseUrl);
-getPopularPost(baseUrl);
+getFeaturedPost();
+getLatestPost();
+getPopularPost();
 
 const main = () => {
 	const navLiElements = document.querySelectorAll('nav ul li');
@@ -17,14 +16,18 @@ const main = () => {
 	const categoryContentContainer = document.querySelector('.category-content');
 	const footerNavLinks = document.querySelectorAll('.footer-nav-link');
 
+	const saveToLocalStorage = (key = '', value = ' ') => {
+		localStorage.setItem(key, value);
+	};
+
 	// Check if the page is refreshed
-	localStorage.getItem('navLinkID') != 'home' ? showCategoryContent() : hideCategoryContent();
+	localStorage.getItem('NAV-LINK-ID') != 'home' ? showCategoryContent() : hideCategoryContent();
 
 	navLiElements.forEach(function (navLiElement) {
-		localStorage.getItem('navLinkID') != 'home' ? hideHomeContent() : showHomeContent();
+		localStorage.getItem('NAV-LINK-ID') != 'home' ? hideHomeContent() : showHomeContent();
 
 		// Nav Menu Underline Active Behavior
-		if (localStorage.getItem('navLinkID') == navLiElement.id) {
+		if (localStorage.getItem('NAV-LINK-ID') == navLiElement.id) {
 			navAElements.forEach(function (navAElement) {
 				if (navAElement.classList.contains('underline')) {
 					navAElement.classList.remove('underline');
@@ -36,8 +39,9 @@ const main = () => {
 
 		Array.from(footerNavLinks).forEach((footerNavLink) => {
 			footerNavLink.addEventListener('click', function () {
+				saveToLocalStorage('NAV-LINK-ID', this.dataset.id);
+				categoryContentContainer.innerHTML = '';
 				navLiElement.click();
-				localStorage.setItem('navLinkID', this.id);
 			});
 		});
 
@@ -48,18 +52,21 @@ const main = () => {
 				}
 			});
 
-			this.firstElementChild.classList.add('underline');
+			if (this.id == localStorage.getItem('NAV-LINK-ID')) {
+				// console.log(this.firstElementChild);
+				this.firstElementChild.classList.add('underline');
+			}
 
 			if (this.id != 'home') {
 				hideHomeContent(this.id);
 				showCategoryContent();
-				localStorage.setItem('navLinkID', this.id);
-				localStorage.setItem('hidden-home-content', true);
+				saveToLocalStorage('NAV-LINK-ID', this.id);
+				saveToLocalStorage('HIDDEN-HOME-CONTENT', true);
 			} else {
 				showHomeContent(this.id);
 				hideCategoryContent();
-				localStorage.setItem('navLinkID', this.id);
-				localStorage.setItem('hidden-home-content', false);
+				saveToLocalStorage('NAV-LINK-ID', this.id);
+				saveToLocalStorage('HIDDEN-HOME-CONTENT', false);
 			}
 		});
 	});
@@ -86,7 +93,7 @@ const main = () => {
 	}
 
 	function showCategoryContent() {
-		getPostBasedCategory(baseUrl, localStorage.getItem('navLinkID'));
+		getPostBasedCategory(localStorage.getItem('NAV-LINK-ID'));
 		categoryContentContainer.innerHTML = '';
 		categoryContentContainer.classList.remove('hidden');
 		categoryContentContainer.classList.add('flex');
