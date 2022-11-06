@@ -1,10 +1,10 @@
 class DataSource {
-	static getNews(key, sortBy = 'publishedAt') {
+	static getNews(key, sortBy = 'publishedAt', pageSize = 100) {
 		return new Promise((resolve, reject) => {
 			const baseUrl = 'https://newsapi.org/v2/everything?';
-			fetch(`${baseUrl}q=${key}&sortBy=${sortBy}&pageSize=100&language=en`, {
+			fetch(`${baseUrl}q=${key}&sortBy=${sortBy}&pageSize=${pageSize}&language=en`, {
 				headers: {
-					'X-Api-Key': 'dadfe7d798784bcb8b4d0fb510216e81',
+					'X-Api-Key': 'fbb232f6a29f48d8a4c6ad1eebc31eb7',
 				},
 			}).then((response) => {
 				if (response.status == 200) {

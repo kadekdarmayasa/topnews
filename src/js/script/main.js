@@ -1,3 +1,4 @@
+import getAllArticles from './all-articles';
 import getPostBasedCategory from './category-content';
 import getFeaturedPost from './features-content';
 import getLatestPost from './latest-post-content';
@@ -15,34 +16,49 @@ const main = () => {
 	const popularPosts = document.querySelector('popular-posts');
 	const categoryContentContainer = document.querySelector('.category-content');
 	const footerNavLinks = document.querySelectorAll('.footer-nav-link');
-	const searchModalButton = document.getElementById('search-button');
 	const searchModalKeyword = document.getElementById('search-keyword');
 	const modal = document.getElementById('defaultModal');
 	const searchButton = document.querySelector('.search');
 	const searchForm = document.getElementById('search-form');
+	const articlesBody = document.querySelector('.all-articles .body');
+	const articlesHeader = document.querySelector('.all-articles .header');
+	const articlesContainer = document.querySelector('.all-articles');
 
-	window.addEventListener('keydown', function (event) {
-		if (event.ctrlKey && event.key == 'K') searchButton.click();
-	});
+	// This is used to trigger the search button element (CTRL + SHIFT + K)
+	window.addEventListener('keydown', (event) => event.ctrlKey && event.key == 'K' && searchButton.click());
 
-	const saveToLocalStorage = (key = '', value = ' ') => {
-		localStorage.setItem(key, value);
-	};
+	// To save any change to local storage
+	const saveToLocalStorage = (key = '', value = ' ') => localStorage.setItem(key, value);
 
-	if (localStorage.getItem('NAV-LINK-ID') != 'home' && localStorage.getItem('NAV-LINK-ID') != null) {
+	// Content Behavior when the page is refreshed
+	if (localStorage.getItem('NAV-LINK-ID') == 'none') {
+		hideModal();
+		hideCategoryContent();
+		hideHomeContent();
+		articlesContainer.classList.remove('hidden');
+		articlesHeader.firstElementChild.innerHTML = localStorage.getItem('LAST-SEARCH');
+		getAllArticles(localStorage.getItem('LAST-SEARCH'));
+	} else if (localStorage.getItem('NAV-LINK-ID') != 'home' && localStorage.getItem('NAV-LINK-ID') != null) {
 		showCategoryContent();
 		hideHomeContent();
+		articlesContainer.classList.add('hidden');
 	} else if (localStorage.getItem('NAV-LINK-ID') == 'home') {
 		hideCategoryContent();
 		showHomeContent();
+		articlesContainer.classList.add('hidden');
 	}
 
 	navLiElements.forEach(function (navLiElement) {
 		// Nav Menu Underline Active Behavior
 		if (localStorage.getItem('NAV-LINK-ID') == navLiElement.id) {
 			toggleUnderlineMenu(navLiElement);
+		} else if (localStorage.getItem('NAV-LINK-ID') == 'none') {
+			navAElements.forEach((navAElement) => {
+				navAElement.classList.remove('underline');
+			});
 		}
 
+		// Footer Navigation Links Behavior
 		Array.from(footerNavLinks).forEach((footerNavLink) => {
 			footerNavLink.addEventListener('click', function () {
 				if (this.dataset.id == navLiElement.id) {
@@ -53,29 +69,38 @@ const main = () => {
 			});
 		});
 
+		// Behavior of the content when nav menu is clicked
 		navLiElement.addEventListener('click', function () {
 			toggleUnderlineMenu(this);
 			if (this.id != 'home') {
 				hideHomeContent();
 				showCategoryContent();
 				saveToLocalStorage('NAV-LINK-ID', this.id);
+				articlesContainer.classList.add('hidden');
 			} else if (this.id == 'home') {
 				showHomeContent();
 				hideCategoryContent();
 				saveToLocalStorage('NAV-LINK-ID', this.id);
+				articlesContainer.classList.add('hidden');
 			}
 		});
 	});
 
-	searchForm.addEventListener('submit', function (event) {
+	searchForm.onsubmit = function (event) {
 		navAElements.forEach(function (navAElement) {
 			navAElement.classList.remove('underline');
 		});
 		hideModal();
 		hideCategoryContent();
 		hideHomeContent();
+		articlesContainer.classList.remove('hidden');
+		articlesHeader.firstElementChild.innerHTML = searchModalKeyword.value;
+		articlesBody.innerHTML = '';
+		getAllArticles(searchModalKeyword.value);
+		saveToLocalStorage('NAV-LINK-ID', 'none');
+		saveToLocalStorage('LAST-SEARCH', searchModalKeyword.value);
 		event.preventDefault();
-	});
+	};
 
 	searchButton.addEventListener('click', function (event) {
 		showModal();
