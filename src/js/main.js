@@ -20,53 +20,39 @@ const main = () => {
 		localStorage.setItem(key, value);
 	};
 
-	// Check if the page is refreshed
-	localStorage.getItem('NAV-LINK-ID') != 'home' ? showCategoryContent() : hideCategoryContent();
+	if (localStorage.getItem('NAV-LINK-ID') != 'home' && localStorage.getItem('NAV-LINK-ID') != null) {
+		showCategoryContent();
+		hideHomeContent();
+	} else if (localStorage.getItem('NAV-LINK-ID') == 'home') {
+		hideCategoryContent();
+		showHomeContent();
+	}
 
 	navLiElements.forEach(function (navLiElement) {
-		localStorage.getItem('NAV-LINK-ID') != 'home' ? hideHomeContent() : showHomeContent();
-
 		// Nav Menu Underline Active Behavior
 		if (localStorage.getItem('NAV-LINK-ID') == navLiElement.id) {
-			navAElements.forEach(function (navAElement) {
-				if (navAElement.classList.contains('underline')) {
-					navAElement.classList.remove('underline');
-				}
-			});
-
-			navLiElement.firstElementChild.classList.add('underline');
+			toggleUnderlineMenu(navLiElement);
 		}
 
 		Array.from(footerNavLinks).forEach((footerNavLink) => {
 			footerNavLink.addEventListener('click', function () {
-				saveToLocalStorage('NAV-LINK-ID', this.dataset.id);
-				categoryContentContainer.innerHTML = '';
-				navLiElement.click();
+				if (this.dataset.id == navLiElement.id) {
+					saveToLocalStorage('NAV-LINK-ID', this.dataset.id);
+					navLiElement.click();
+				}
 			});
 		});
 
 		navLiElement.addEventListener('click', function () {
-			navAElements.forEach(function (navAElement) {
-				if (navAElement.classList.contains('underline')) {
-					navAElement.classList.remove('underline');
-				}
-			});
-
-			if (this.id == localStorage.getItem('NAV-LINK-ID')) {
-				// console.log(this.firstElementChild);
-				this.firstElementChild.classList.add('underline');
-			}
-
+			toggleUnderlineMenu(this);
 			if (this.id != 'home') {
 				hideHomeContent(this.id);
 				showCategoryContent();
 				saveToLocalStorage('NAV-LINK-ID', this.id);
-				saveToLocalStorage('HIDDEN-HOME-CONTENT', true);
 			} else {
 				showHomeContent(this.id);
 				hideCategoryContent();
 				saveToLocalStorage('NAV-LINK-ID', this.id);
-				saveToLocalStorage('HIDDEN-HOME-CONTENT', false);
 			}
 		});
 	});
@@ -98,6 +84,16 @@ const main = () => {
 		categoryContentContainer.classList.remove('hidden');
 		categoryContentContainer.classList.add('flex');
 		categoryContentContainer.classList.add('mt-20');
+	}
+
+	function toggleUnderlineMenu(targetElement) {
+		navAElements.forEach(function (navAElement) {
+			if (navAElement.classList.contains('underline')) {
+				navAElement.classList.remove('underline');
+			}
+		});
+
+		targetElement.firstElementChild.classList.add('underline');
 	}
 };
 
