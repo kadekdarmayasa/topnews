@@ -8,5 +8,5 @@ module.exports = {
 		},
 		extend: {},
 	},
-	plugins: [require('@tailwindcss/line-clamp'), require('daisyui')],
+	plugins: [require('@tailwindcss/line-clamp'), require('daisyui'), require('flowbite/plugin')],
 };

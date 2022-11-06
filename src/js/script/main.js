@@ -1,7 +1,7 @@
-import getPostBasedCategory from './script/category-content';
-import getFeaturedPost from './script/features-content';
-import getLatestPost from './script/latest-post-content';
-import getPopularPost from './script/popular-post-content';
+import getPostBasedCategory from './category-content';
+import getFeaturedPost from './features-content';
+import getLatestPost from './latest-post-content';
+import getPopularPost from './popular-post-content';
 getFeaturedPost();
 getLatestPost();
 getPopularPost();
@@ -15,6 +15,15 @@ const main = () => {
 	const popularPosts = document.querySelector('popular-posts');
 	const categoryContentContainer = document.querySelector('.category-content');
 	const footerNavLinks = document.querySelectorAll('.footer-nav-link');
+	const searchModalButton = document.getElementById('search-button');
+	const searchModalKeyword = document.getElementById('search-keyword');
+	const modal = document.getElementById('defaultModal');
+	const searchButton = document.querySelector('.search');
+	const searchForm = document.getElementById('search-form');
+
+	window.addEventListener('keydown', function (event) {
+		if (event.ctrlKey && event.key == 'K') searchButton.click();
+	});
 
 	const saveToLocalStorage = (key = '', value = ' ') => {
 		localStorage.setItem(key, value);
@@ -39,6 +48,7 @@ const main = () => {
 				if (this.dataset.id == navLiElement.id) {
 					saveToLocalStorage('NAV-LINK-ID', this.dataset.id);
 					navLiElement.click();
+					document.body.click();
 				}
 			});
 		});
@@ -46,16 +56,47 @@ const main = () => {
 		navLiElement.addEventListener('click', function () {
 			toggleUnderlineMenu(this);
 			if (this.id != 'home') {
-				hideHomeContent(this.id);
+				hideHomeContent();
 				showCategoryContent();
 				saveToLocalStorage('NAV-LINK-ID', this.id);
-			} else {
-				showHomeContent(this.id);
+			} else if (this.id == 'home') {
+				showHomeContent();
 				hideCategoryContent();
 				saveToLocalStorage('NAV-LINK-ID', this.id);
 			}
 		});
 	});
+
+	searchForm.addEventListener('submit', function (event) {
+		navAElements.forEach(function (navAElement) {
+			navAElement.classList.remove('underline');
+		});
+		hideModal();
+		hideCategoryContent();
+		hideHomeContent();
+		event.preventDefault();
+	});
+
+	searchButton.addEventListener('click', function (event) {
+		showModal();
+		event.preventDefault();
+	});
+
+	function hideModal() {
+		modal.classList.add('hidden');
+		modal.setAttribute('aria-hidden', true);
+		modal.removeAttribute('aria-modal');
+		modal.removeAttribute('role');
+	}
+
+	function showModal() {
+		searchModalKeyword.value = '';
+		modal.classList.remove('hidden');
+		modal.classList.add('flex');
+		modal.removeAttribute('aria-hidden');
+		modal.setAttribute('aria-modal', true);
+		modal.setAttribute('role', 'dialog');
+	}
 
 	function hideHomeContent() {
 		header.lastElementChild.classList.add('hidden');
