@@ -42,7 +42,7 @@ const main = () => {
 		showCategoryContent();
 		hideHomeContent();
 		articlesContainer.classList.add('hidden');
-	} else if (localStorage.getItem('NAV-LINK-ID') == 'home') {
+	} else if (localStorage.getItem('NAV-LINK-ID') == 'home' || localStorage.getItem('NAV-LINK-ID') == none) {
 		hideCategoryContent();
 		showHomeContent();
 		articlesContainer.classList.add('hidden');
