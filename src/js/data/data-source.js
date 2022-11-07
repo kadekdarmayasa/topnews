@@ -7,11 +7,7 @@ class DataSource {
 					'X-Api-Key': 'fbb232f6a29f48d8a4c6ad1eebc31eb7',
 				},
 			}).then((response) => {
-				if (response.status == 200) {
-					resolve(response.json());
-				} else {
-					reject(response);
-				}
+				response.status == 200 ? resolve(response.json()) : reject(response);
 			});
 		});
 	}

@@ -1,10 +1,6 @@
 const formatDate = (date) => {
 	const objDate = new Date(date);
-	const year = objDate.getFullYear();
-	const month = objDate.getMonth();
-	const day = objDate.getDate();
-
-	return `${day} - ${month} - ${year}`;
+	return `${objDate.getDate()} - ${objDate.getMonth()} - ${objDate.getFullYear()}`;
 };
 
 export default formatDate;

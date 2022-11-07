@@ -84,7 +84,11 @@ const getFeaturedPost = async () => {
 		        </article>
 		  `;
 			}
-		} catch (e) {}
+		} catch (err) {
+			if (err.status) {
+				console.log('Too many request has made');
+			}
+		}
 	};
 };
 
