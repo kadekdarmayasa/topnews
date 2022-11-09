@@ -1,6 +1,6 @@
 import DataSource from '../data/data-source';
 import formatDate from './dateformat';
-import isNull from './null-checking';
+import { isNull } from './null-checking';
 
 const getFeaturedPost = async () => {
 	window.onload = async () => {
