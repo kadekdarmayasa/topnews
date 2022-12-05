@@ -19,6 +19,15 @@ module.exports = merge(common, {
 		],
 	},
 	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					test: /[\\/]node_modules[\\/](tailwind|daisyui|flowbite)[\\/]/,
+					name: 'vendors',
+					chunks: 'all',
+				},
+			},
+		},
 		minimizer: [new CssMinizerPlugin()],
 	},
 });

@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "webpack serve --config webpack.dev.js",
-		"build": "webpack --config webpack.prod.js"
+		"build": "webpack --config webpack.prod.js",
+		"getJson": "webpack --json",
+		"stats": "webpack --profile --json"
 	},
 	"author": "kadekdarmayas",
 	"license": "ISC",
@@ -17,6 +19,7 @@
 		"babel-loader": "^8.2.5",
 		"css-loader": "^6.7.1",
 		"css-minimizer-webpack-plugin": "^4.2.2",
+		"mini-css-extract-plugin": "^2.7.1",
 		"postcss": "^8.4.18",
 		"postcss-loader": "^7.0.1",
 		"postcss-preset-env": "^7.8.2",
