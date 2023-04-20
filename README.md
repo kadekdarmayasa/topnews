@@ -11,11 +11,14 @@ Top News Website is a website that provides news.
 
 News Data we fetch from [News Api](https://newsapi.org/)
 
-## Clone to your machine and modify it
+## Screenshots
+### Homepage
+- Desktop
+![desktop](public/screenshots/homepage.jpeg?raw=true "desktop")
+
+- Mobile
+![mobile](public/screenshots/mobile.jpeg?raw=true "mobile")
 
 
-```
-  git clone https://github.com/kadekdarmayasa/topnews.git
-  npm install
-  npm run dev
-```
+### Search Page
+![Search Page](public/screenshots/search-page.jpeg?raw=true "Search Page")

@@ -1,20 +1,20 @@
 class FeaturedForMembers extends HTMLElement {
-	connectedCallback() {
-		this.className = this.getAttribute('class') || null;
-		this.render();
-	}
+  connectedCallback() {
+    this.className = this.getAttribute('class') || null;
+    this.render();
+  }
 
-	attributeChangedCallback(name, newValue) {
-		this[name] = newValue;
-		this.render();
-	}
+  attributeChangedCallback(name, newValue) {
+    this[name] = newValue;
+    this.render();
+  }
 
-	static get observedAttributes() {
-		return ['class'];
-	}
+  static get observedAttributes() {
+    return ['class'];
+  }
 
-	render() {
-		this.innerHTML = `
+  render() {
+    this.innerHTML = `
       <section class="mt-32 mb-8">
         <h2 class="text-xl font-semibold">Featured For Members</h2>
         <hr
@@ -33,7 +33,7 @@ class FeaturedForMembers extends HTMLElement {
         </section>
       </section>
     `;
-	}
+  }
 }
 
 customElements.define('featured-for-members', FeaturedForMembers);
