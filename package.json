@@ -1,37 +1,47 @@
 {
-	"name": "topnews-website",
-	"version": "1.0.0",
-	"description": "Top News Website",
-	"main": "index.js",
-	"scripts": {
-		"dev": "webpack serve --config webpack.dev.js",
-		"build": "webpack --config webpack.prod.js",
-		"getJson": "webpack --json",
-		"stats": "webpack --profile --json"
-	},
-	"author": "kadekdarmayas",
-	"license": "ISC",
-	"devDependencies": {
-		"@babel/core": "^7.19.3",
-		"@babel/preset-env": "^7.19.4",
-		"@tailwindcss/line-clamp": "^0.4.2",
-		"autoprefixer": "^10.4.12",
-		"babel-loader": "^8.2.5",
-		"css-loader": "^6.7.1",
-		"css-minimizer-webpack-plugin": "^4.2.2",
-		"mini-css-extract-plugin": "^2.7.1",
-		"postcss": "^8.4.18",
-		"postcss-loader": "^7.0.1",
-		"postcss-preset-env": "^7.8.2",
-		"style-loader": "^3.3.1",
-		"tailwindcss": "^3.1.8",
-		"webpack": "^5.74.0",
-		"webpack-cli": "^4.10.0",
-		"webpack-dev-server": "^4.11.1",
-		"webpack-merge": "^5.8.0"
-	},
-	"dependencies": {
-		"daisyui": "^2.33.0",
-		"flowbite": "^1.5.3"
-	}
+  "name": "topnews-website",
+  "version": "1.0.0",
+  "description": "Top News Website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "getJson": "webpack --json",
+    "stats": "webpack --profile --json"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2
+  },
+  "author": "kadekdarmayasa",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "autoprefixer": "^10.4.12",
+    "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.2.2",
+    "dotenv-webpack": "^8.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.1",
+    "postcss": "^8.4.18",
+    "postcss-loader": "^7.0.1",
+    "postcss-preset-env": "^7.8.2",
+    "prettier": "^3.0.3",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.1.8",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "axios": "^1.5.0",
+    "daisyui": "^2.33.0",
+    "flowbite": "^1.5.3"
+  }
 }

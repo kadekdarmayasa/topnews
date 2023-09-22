@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/a53653dcab.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Top News</title>
+  </head>
+
+  <body class="text-[#06283D] bg-white">
+    <header class="font-display text-[#06283D]">
+      <nav
+        class="flex justify-between items-center px-6 md:px-[50px] h-24 relative 2xl:container mx-auto"
+      >
+        <a href="" class="brand text-2xl font-bold">TopNews</a>
+        <ul
+          class="mt-2 text-base font-medium w-11/12 overflow-x-hidden whitespace-nowrap absolute top-24 h-9 sm:w-auto sm:overflow-visible sm:whitespace-normal sm:static md:h-auto"
+        >
+          <li class="inline-block mr-5 cursor-pointer" id="home">
+            <a
+              href=""
+              class="underline underline-offset-8 decoration-[#06283D]"
+            >
+              Home
+            </a>
+          </li>
+
+          <li class="inline-block mr-5 cursor-pointer" id="technology">
+            <a
+              href=""
+              class="hover:underline underline-offset-8 decoration-[#06283D]"
+            >
+              Technology
+            </a>
+          </li>
+
+          <li class="inline-block mr-5 cursor-pointer" id="health">
+            <a
+              href=""
+              class="hover:underline underline-offset-8 decoration-[#06283D]"
+            >
+              Health
+            </a>
+          </li>
+
+          <li class="inline-block mr-5 cursor-pointer" id="art">
+            <a
+              href=""
+              class="hover:underline underline-offset-8 decoration-[#06283D]"
+            >
+              Art
+            </a>
+          </li>
+
+          <li class="inline-block mr-5 cursor-pointer" id="education">
+            <a
+              href=""
+              class="hover:underline underline-offset-8 decoration-[#06283D]"
+            >
+              Education
+            </a>
+          </li>
+
+          <li class="inline-block mr-5 cursor-pointer" id="science">
+            <a
+              href=""
+              class="hover:underline underline-offset-8 decoration-[#06283D]"
+            >
+              Science
+            </a>
+          </li>
+        </ul>
+        <button
+          data-tooltip-target="tooltip-default"
+          data-modal-toggle="defaultModal"
+          class="search bg-[#eaeaea] rounded-md w-10 h-10 flex items-center justify-center hover:shadow-sm hover:bg-[#ebebeb] transition-all"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="tooltip-default"
+          role="tooltip"
+          class="inline-block absolute invisible z-10 py-2 px-3 text-xs font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+        >
+          CTRL + Shift + K
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="2xl:container mx-auto px-6 md:px-[50px]" id="jumbotron">
+      <div
+        class="bg-[#DFF6FF] md:text-left text-center font-display mt-20 sm:mt-6 flex justify-between items-center p-16 md:px-50 px-8 flex-col md:flex-row"
+      >
+        <div
+          class="first-column sm:max-w-[460px] md:order-1 order-2 mt-12 md:mt-0"
+        >
+          <h1 class="font-semibold text-xl sm:text-2xl leading-10">
+            Find Popular and Helpful News <br class="hidden sm:block" />
+            on TopNews
+          </h1>
+          <p class="font-medium text-base leading-9 mt-8 mb-8">
+            Topnews is a site that provides news from various sources. Where the
+            news presented can provide benefit to the individual who reads it.
+          </p>
+          <div class="buttons font-medium">
+            <button
+              class="w-48 h-[50px] mb-4 sm:mr-2 bg-[#06283D] text-white rounded-md"
+            >
+              Sign Up
+            </button>
+            <button class="w-48 h-[50px] border-2 border-[#06283D] rounded-md">
+              Subscribe
+            </button>
+          </div>
+        </div>
+        <div class="second-column max-w-[540px] md:order-2">
+          <img src="./img/jumbotron-img.svg" alt="jumbtron" />
+        </div>
+      </div>
+    </section>
+
+    <main
+      class="px-6 md:px-[50px] font-display mb-32 md:mb-52 2xl:container mx-auto"
+    >
+      <div
+        class="category-content mt-20 flex flex-wrap gap-x-4 gap-y-8 justify-center"
+      ></div>
+      <div class="all-articles">
+        <div
+          id="alert-1"
+          class="flex p-4 mb-4 bg-blue-100 rounded-lg dark:bg-blue-200 mt-20 sm:mt-3"
+          role="alert"
+        >
+          <svg
+            aria-hidden="true"
+            class="flex-shrink-0 w-5 h-5 text-blue-700 dark:text-blue-800"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+
+          <span class="sr-only">Info</span>
+
+          <div class="ml-3 text-sm text-blue-700 dark:text-blue-800">
+            <h4 class="header font-semibold">
+              Total Result of <span class="font-bold"></span>
+            </h4>
+          </div>
+
+          <button
+            type="button"
+            class="ml-auto -mx-1.5 -my-1.5 bg-blue-100 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300"
+            data-dismiss-target="#alert-1"
+            aria-label="Close"
+          >
+            <span class="sr-only">Close</span>
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div
+          class="body mt-20 flex flex-wrap gap-x-4 gap-y-8 justify-center"
+        ></div>
+      </div>
+      <featured-for-members class="featured-content"></featured-for-members>
+      <div class="mt-48 flex gap-10 md:flex-row flex-col w-full">
+        <latest-posts class="md:w-[65%]"></latest-posts>
+        <popular-posts class="md:w-[35%] mt-6 md:mt-0"></popular-posts>
+      </div>
+    </main>
+
+    <div
+      id="defaultModal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden search-modal overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-white/50 backdrop-blur-[2px]"
+    >
+      <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div
+            class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Search Articles
+            </h3>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-toggle="defaultModal"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="sr-only">Close search modal</span>
+            </button>
+          </div>
+          <div class="p-6 space-y-6">
+            <form id="search-form">
+              <label
+                for="default-search"
+                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
+                >Search</label
+              >
+              <div class="relative">
+                <div
+                  class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  type="search"
+                  id="search-keyword"
+                  class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search Popular News, Latest Post..."
+                  required
+                  autocomplete="off"
+                />
+                <button
+                  type="submit"
+                  id="search-button"
+                  class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="px-6 md:px-[50px] pb-6 font-display 2xl:container mx-auto">
+      <hr
+        class="mt-2 mb-8 w-full h-[0.09rem] block bg-[#0d3249] relative overflow-visible"
+      />
+      <div class="flex justify-between md:flex-row flex-col">
+        <div class="flex flex-col justify-between">
+          <a href="" class="brand text-2xl font-bold">TopNews</a>
+        </div>
+
+        <div class="mt-10 md:mt-0">
+          <ul class="text-lg">
+            <li class="mb-2 footer-nav-link cursor-pointer" data-id="home">
+              <a href="">Home</a>
+            </li>
+            <li
+              class="mb-2 footer-nav-link cursor-pointer"
+              data-id="technology"
+            >
+              <a>Technology</a>
+            </li>
+            <li class="mb-2 footer-nav-link cursor-pointer" data-id="health">
+              <a>Health</a>
+            </li>
+            <li class="mb-2 footer-nav-link cursor-pointer" data-id="art">
+              <a>Art</a>
+            </li>
+            <li class="mb-2 footer-nav-link cursor-pointer" data-id="education">
+              <a>Education</a>
+            </li>
+            <li class="mb-2 footer-nav-link cursor-pointer" data-id="science">
+              <a>Science</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="text-lg mt-10 md:mt-0">
+            <li class="mb-2"><a href="">About Us</a></li>
+            <li class="mb-2"><a href="">Contact Us</a></li>
+            <li class="mb-2"><a href="">Newspaper Archive</a></li>
+            <li class="mb-2"><a href="">Advertise</a></li>
+          </ul>
+        </div>
+
+        <div class="text-lg mt-10 md:mt-0">
+          <h3 class="text-xl font-medium mb-3">Subscribe</h3>
+          <ul>
+            <li class="mb-2"><a href="">Why Subscribe?</a></li>
+            <li class="mb-2"><a href="">Subscription Bundles</a></li>
+            <li class="mb-2"><a href="">Gift Subscriptions</a></li>
+          </ul>
+        </div>
+
+        <div class="text-lg mt-10 md:mt-0">
+          <h3 class="text-xl font-medium mb-3">Products & Services</h3>
+          <ul>
+            <li class="mb-2"><a href="">eNews</a></li>
+            <li class="mb-2"><a href="">eBook</a></li>
+            <li class="mb-2"><a href="">Newspaper Archive</a></li>
+            <li class="mb-2"><a href="">Article Archive</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center items-center">
+        <p class="text-center mt-16 text-lg">
+          @2022 TopNews, Indonesia. All Rights Reserved.
+        </p>
+        <div class="social-icons flex mt-6">
+          <a href="" class="mr-4">
+            <img src="./img/facebook-icon.svg" alt="facebook-icon" />
+          </a>
+          <a href="" class="mr-4">
+            <img src="./img/twitter-icon.svg" alt="twitter-icon" />
+          </a>
+          <a href="">
+            <img src="./img/instagram-icon.svg" alt="instagram-icon" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

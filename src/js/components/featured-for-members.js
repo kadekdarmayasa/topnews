@@ -1,16 +1,20 @@
 class FeaturedForMembers extends HTMLElement {
-  connectedCallback() {
-    this.className = this.getAttribute('class') || null;
-    this.render();
+  constructor() {
+    super()
   }
 
-  attributeChangedCallback(name, newValue) {
-    this[name] = newValue;
-    this.render();
+  connectedCallback() {
+    this.className = this.getAttribute('class') || null
+    this.render()
+  }
+
+  attributeChangedCallback(name, newValue, oldValue) {
+    if (this[name] !== oldValue) this[name] = newValue
+    this.render()
   }
 
   static get observedAttributes() {
-    return ['class'];
+    return ['class']
   }
 
   render() {
@@ -25,17 +29,14 @@ class FeaturedForMembers extends HTMLElement {
       <section class="flex w-full gap-6 justify-between flex-col md:flex-row">
         <section class="feature-1 w-full mb-16 md:mb-0 md:max-w-[34%] max-h-[300px]" id="feature-1">
         </section>
-
         <section class="feature-2 max-h-[300px] w-full md:max-w-[34%] flex flex-col gap-y-8 gap-x-4 md:gap-y-4">
         </section>
-
         <section class="feature-3 h-[300px] w-full md:max-w-[30%] flex flex-col gap-y-8 gap-x-4 md:gap-y-4">
         </section>
       </section>
-    `;
+    `
   }
 }
 
-customElements.define('featured-for-members', FeaturedForMembers);
-
-export default FeaturedForMembers;
+customElements.define('featured-for-members', FeaturedForMembers)
+export default FeaturedForMembers
