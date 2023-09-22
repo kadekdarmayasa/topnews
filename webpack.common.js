@@ -1,15 +1,15 @@
-const path = require("path");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const DotEnv = require("dotenv-webpack");
+const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const DotEnv = require('dotenv-webpack')
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/js/app.js"),
+    app: path.resolve(__dirname, 'src/js/app.js'),
   },
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "[name].js",
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name].js',
     clean: true,
   },
   module: {
@@ -18,14 +18,14 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: { sourceMap: true },
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: { sourceMap: true },
           },
         ],
@@ -35,16 +35,16 @@ module.exports = {
   plugins: [
     new DotEnv(),
     new HTMLWebpackPlugin({
-      filename: "index.html",
-      template: path.resolve(__dirname, "src/templates/index.html"),
+      filename: 'index.html',
+      template: path.resolve(__dirname, 'src/templates/index.html'),
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "public"),
-          to: path.resolve(__dirname, "build"),
+          from: path.resolve(__dirname, 'public'),
+          to: path.resolve(__dirname, 'build'),
         },
       ],
     }),
   ],
-};
+}
